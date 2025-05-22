@@ -463,12 +463,12 @@ Set up Prometheus and Grafana to monitor your application.
    scrape_configs:
      - job_name: 'node_exporter'
        static_configs:
-         - targets: ['localhost:9100']
+         - targets: ["localhost:9100"]
 
      - job_name: 'jenkins'
        metrics_path: '/prometheus'
        static_configs:
-         - targets: ['<your-jenkins-ip>:<your-jenkins-port>']
+         - targets: ["<your-jenkins-ip>:<your-jenkins-port>"]
    ```
 
    Make sure to replace `<your-jenkins-ip>` and `<your-jenkins-port>` with the appropriate values for your Jenkins setup.
