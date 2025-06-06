@@ -7,11 +7,11 @@ pipeline{
     //     CONTAINER_NAME = "netflix" // Name of the container created in Jenkins
     // }
     stages {
-        stage('clean workspace'){
-            steps{
-                cleanWs()
-            }
-        }
+        // stage('clean workspace'){
+        //     steps{
+        //         cleanWs()
+        //     }
+        // }
         stage('Checkout from Git'){
             steps{
                 git 'https://github.com/Sushmaa123/DevSecOps-Project.git'
