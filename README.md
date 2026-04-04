@@ -33,8 +33,7 @@
 
 - To stop and remove the container:
   ```bash
-  docker stop <containerid>
-  docker rmi -f netflix
+  docker rm -f netflix
   ```
 
 **Note:** You need an API key for the application to work.
