@@ -79,7 +79,7 @@ sudo apt-get install trivy
 - Install Java:
   ```bash
   sudo apt update
-  sudo apt install fontconfig openjdk-21-jre
+  sudo apt install fontconfig openjdk-21-jre -y
   java -version
   ```
 - Install Jenkins:
@@ -98,7 +98,7 @@ sudo apt-get install trivy
   ```
 - Retrieve the administrator password:
   ```bash
-  cat /var/jenkins_home/secrets/initialAdminPassword
+  sudo cat /var/jenkins_home/secrets/initialAdminPassword
   ```
 - Paste the password in Jenkins setup, install suggested plugins, and create a user.
 
