@@ -79,9 +79,9 @@ sudo apt-get install trivy
 ### Step 1: Install Jenkins for Automation
 - Install Java:
   ```bash
-sudo apt update
-sudo apt install fontconfig openjdk-21-jre
-java -version
+  sudo apt update
+  sudo apt install fontconfig openjdk-21-jre
+  java -version
   ```
 - Install Jenkins:
   ```bash
