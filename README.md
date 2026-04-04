@@ -4,7 +4,7 @@
 
 ### Step 1: Launch EC2 (Ubuntu 22.04)
 - Provision an EC2 instance with:
-  - Instance type: `t2.large`
+  - Instance type: `t2.medium`
   - Volume: `15GB`
 - Connect to the instance using SSH.
 
