@@ -109,8 +109,7 @@ sudo apt-get install trivy
   2. OWASP Dependency Check
   3. NodeJS Plugin
   4. Docker, Docker Pipeline, Docker Build-Step, CloudBees Docker Build & Publish
-  5. Slack Notification
-  6. Pipeline Stage View
+  5. Pipeline Stage View
 
 ### Step 3: Configure Java, Node.js, sonar-scanner,owasp dependency check and docker in Global Tool Configuration
 
@@ -124,7 +123,7 @@ sudo apt-get install trivy
 After adding all the above names in the respective section, select install automatically and add your desired version and installation method
 - Click `Apply` and `Save`.
 
-### step 4: Configure Sonarqube and Slack in System Configuration
+### step 4: Configure Sonarqube
 
 The Configure System option is used in Jenkins to configure different server
 
@@ -139,13 +138,6 @@ The Configure System option is used in Jenkins to configure different server
    - select environment variables
    - Add name [sonar-server] and add credentials
 
-  **Slack**
-
-    - Create a workspace and add channel
-    - Go to slack app and add jenkins CI to slack
-    - Get the subdomain and credentialsID
-    - add subdomain and credentials in jenkins
-    - Click on apply and save
 
 ### step 5: Add all the required credentials in security credentials section
 
