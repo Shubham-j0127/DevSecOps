@@ -3,6 +3,7 @@ pipeline{
     environment {
         // SCANNER_HOME=tool 'sonar-scanner'
         TMDB_V3_API_KEY = credentials('tmdb-api-key')
+        NVD_API_KEY = credentials('nvd-api-key')
         IMAGE_NAME = "sushmaagowdaa/netflix" // Name of the image created in Jenkins
         CONTAINER_NAME = "netflix" // Name of the container created in Jenkins
     }
