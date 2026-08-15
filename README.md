@@ -59,20 +59,7 @@
 sudo docker run -itd --name sonarqube -p 9000:9000 sonarqube
 ```
 - Access SonarQube at: `http://<public-ip>:9000` (Default credentials: admin/admin)
-
-### Install Trivy
-```bash
-sudo apt-get install wget apt-transport-https gnupg lsb-release
-wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
-sudo apt-get update
-sudo apt-get install trivy
-```
-- Scan an image using Trivy:
-  ```bash
-  trivy image <imageid>
-  ```
-
+- 
 ## Phase 3: CI/CD Setup to Run Netflix Using Jenkins
 
 ### Step 1: Install Jenkins for Automation
@@ -198,11 +185,6 @@ The Configure System option is used in Jenkins to configure different server
             }
        }
 
-        stage('TRIVY FS SCAN') {
-            steps {
-                sh "trivy fs . > trivyfs.txt"     
-            }
-        }
         stage('Clean Up Docker Resources') {
             steps {
                 script {
@@ -239,9 +221,14 @@ The Configure System option is used in Jenkins to configure different server
                 }
             }
         }
-        stage("TRIVY"){
-            steps{
-                sh "trivy image $IMAGE_NAME > trivyimage.txt"
+        stage('Trivy Scan') {
+            steps {
+                sh '''
+                    docker run --rm \
+                      -v /var/run/docker.sock:/var/run/docker.sock \
+                      aquasec/trivy:latest \
+                      image myapp:${BUILD_NUMBER}
+                '''
             }
         }
         stage('Deploy to container'){
