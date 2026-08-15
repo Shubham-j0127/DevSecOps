@@ -66,8 +66,8 @@ pipeline{
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'docker-cred'){   
-                       sh 'docker build --build-arg TMDB_V3_API_KEY=$TMDB_V3_API_KEY -t $IMAGE_NAME .'
-                       sh 'docker push $IMAGE_NAME'
+                       sh 'sudo docker build --build-arg TMDB_V3_API_KEY=$TMDB_V3_API_KEY -t $IMAGE_NAME .'
+                       sh 'sudo docker push $IMAGE_NAME'
                     }
                 }
             }
@@ -84,7 +84,7 @@ pipeline{
      }
         stage('Deploy to container'){
             steps{
-                sh 'docker run -itd --name $CONTAINER_NAME -p 8081:80 $IMAGE_NAME'
+                sh 'sudo docker run -itd --name $CONTAINER_NAME -p 8081:80 $IMAGE_NAME'
             }
         }
     }
