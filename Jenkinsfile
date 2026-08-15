@@ -40,7 +40,7 @@ pipeline{
             steps {
                 script {
                     // Remove the specific container
-                    bat '''
+                    sh '''
                     if docker ps -a --format '{{.Names}}' | grep -q $CONTAINER_NAME; then
                         echo "Stopping and removing container: $CONTAINER_NAME"
                         docker stop $CONTAINER_NAME
@@ -51,7 +51,7 @@ pipeline{
                     '''
 
                     // Remove the specific image
-                    bat '''
+                 sh '''
                     if docker images -q $IMAGE_NAME; then
                         echo "Removing image: $IMAGE_NAME"
                         docker rmi -f $IMAGE_NAME
@@ -66,8 +66,8 @@ pipeline{
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'docker-cred'){   
-                       bat 'docker build --build-arg TMDB_V3_API_KEY=$TMDB_V3_API_KEY -t $IMAGE_NAME .'
-                       bat 'docker push $IMAGE_NAME'
+                       sh 'docker build --build-arg TMDB_V3_API_KEY=$TMDB_V3_API_KEY -t $IMAGE_NAME .'
+                       sh 'docker push $IMAGE_NAME'
                     }
                 }
             }
@@ -84,7 +84,7 @@ pipeline{
      }
         stage('Deploy to container'){
             steps{
-                bat 'docker run -itd --name $CONTAINER_NAME -p 8081:80 $IMAGE_NAME'
+                sh 'docker run -itd --name $CONTAINER_NAME -p 8081:80 $IMAGE_NAME'
             }
         }
     }
