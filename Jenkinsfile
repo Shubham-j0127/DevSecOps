@@ -35,11 +35,6 @@ pipeline{
             }
        }
 
-        stage('TRIVY FS SCAN') {
-            steps {
-                bat "trivy fs . > trivyfs.txt"     
-            }
-        }
         stage('Clean Up Docker Resources') {
             steps {
                 script {
@@ -76,11 +71,16 @@ pipeline{
                 }
             }
         }
-        stage("TRIVY"){
-            steps{
-                bat "trivy image $IMAGE_NAME > trivyimage.txt"
-            }
-        }
+        stage('Trivy Scan') {
+         steps {
+             sh '''
+                 docker run --rm \
+                   -v /var/run/docker.sock:/var/run/docker.sock \
+                   aquasec/trivy:latest \
+                   image myapp:${BUILD_NUMBER}
+             '''
+         }
+     }
         stage('Deploy to container'){
             steps{
                 bat 'docker run -itd --name $CONTAINER_NAME -p 8081:80 $IMAGE_NAME'
