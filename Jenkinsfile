@@ -77,7 +77,7 @@ pipeline{
                  docker run --rm \
                    -v /var/run/docker.sock:/var/run/docker.sock \
                    aquasec/trivy:latest \
-                   image myapp:${BUILD_NUMBER}
+                   image $IMAGE_NAME:${BUILD_NUMBER}
              '''
          }
      }
