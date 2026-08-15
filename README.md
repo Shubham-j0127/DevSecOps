@@ -162,9 +162,6 @@ The Configure System option is used in Jenkins to configure different server
    ```
    pipeline{
     agent any
-    tools{
-        nodejs 'node16'
-    }
     environment {
         SCANNER_HOME=tool 'sonar-scanner'
         NVD_API_KEY = credentials('nvd-api-key')
@@ -192,11 +189,6 @@ The Configure System option is used in Jenkins to configure different server
             }
         }
        
-        stage('Install Dependencies') {
-            steps {
-                sh "npm install"
-            }
-        }
         stage('OWASP FS SCAN') {
              steps {
              withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
