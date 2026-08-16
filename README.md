@@ -228,7 +228,7 @@ The Configure System option is used in Jenkins to configure different server
                     docker run --rm \
                       -v /var/run/docker.sock:/var/run/docker.sock \
                       aquasec/trivy:latest \
-                      image myapp:${BUILD_NUMBER} > trivy-image.txt
+                      image ${IMAGE_NAME}:${BUILD_NUMBER} > trivy-image.txt
                 '''
             }
         }
