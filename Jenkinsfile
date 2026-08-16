@@ -78,7 +78,7 @@ pipeline{
                  docker run --rm \
                    -v /var/run/docker.sock:/var/run/docker.sock \
                    aquasec/trivy:latest \
-                   image $IMAGE_NAME:${BUILD_NUMBER}
+                   image $IMAGE_NAME:${BUILD_NUMBER} > trivy-image.txt
              '''
          }
      }
@@ -95,8 +95,8 @@ post {
             body: "Project: ${env.JOB_NAME}<br/>" +
                 "Build Number: ${env.BUILD_NUMBER}<br/>" +
                 "URL: ${env.BUILD_URL}<br/>",
-            to: 'your-mail@gmail.com',                               
-            attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
+            to: 'sushmaananda999@gmail.com',                               
+            attachmentsPattern: 'trivyimage.txt'
         }
     }
 }
