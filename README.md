@@ -96,9 +96,8 @@ sudo docker run -itd --name sonarqube -p 9000:9000 sonarqube:lts-community
 - Install the following plugins:
   1. SonarQube Scanner
   2. OWASP Dependency Check
-  3. NodeJS Plugin
-  4. Docker, Docker Pipeline, Docker Build-Step, CloudBees Docker Build & Publish
-  5. Pipeline Stage View
+  3. Docker, Docker Pipeline, Docker Build-Step, CloudBees Docker Build & Publish
+  4. Pipeline Stage View
 
 ### Step 3: Configure Java, Node.js, sonar-scanner,owasp dependency check and docker in Global Tool Configuration
 
