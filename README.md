@@ -88,6 +88,8 @@ sudo docker run -itd --name sonarqube -p 9000:9000 sonarqube:lts-community
   sudo cat /var/jenkins_home/secrets/initialAdminPassword
   ```
 - Paste the password in Jenkins setup, install suggested plugins, and create a user.
+- Give docker permission to jenkins user:
+  ``` sudo usermod -aG docker jenkins ```
 
 ### Step 2: Install Necessary Plugins in Jenkins
 - Go to `Manage Jenkins` → `Plugins` → `Available Plugins`.
