@@ -56,7 +56,7 @@
 ## Phase 2: Install SonarQube and Trivy
 ### Install SonarQube
 ```bash
-sudo docker run -itd --name sonarqube -p 9000:9000 sonarqube
+sudo docker run -itd --name sonarqube -p 9000:9000 sonarqube:lts-community
 ```
 - Access SonarQube at: `http://<public-ip>:9000` (Default credentials: admin/admin)
 - 
