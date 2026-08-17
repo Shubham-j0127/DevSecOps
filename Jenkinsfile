@@ -4,7 +4,7 @@ pipeline{
         SCANNER_HOME=tool 'sonar-scanner'
         TMDB_V3_API_KEY = credentials('tmdb-api-key')
         NVD_API_KEY = credentials('nvd-api-key')
-        IMAGE_NAME = "sushmaagowdaa/netflix" // Name of the image created in Jenkins
+        IMAGE_NAME = "shubhamj0127/netflix" // Name of the image created in Jenkins
         CONTAINER_NAME = "netflix" // Name of the container created in Jenkins
     }
     stages {
@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git 'https://github.com/Sushmaa123/DevSecOps-Project.git'
+                git 'https://github.com/Shubham-j0127/DevSecOps-Project.git'
             }
         }
         stage("Sonarqube Analysis "){
